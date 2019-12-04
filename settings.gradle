@@ -1,2 +1,2 @@
-include ':app', ':hyrvadapter', ':axrvadapter'
+include ':app', ':hyrvadapter', ':axrvadapter', ':rxjavademo'
 rootProject.name='YuyDemos'
