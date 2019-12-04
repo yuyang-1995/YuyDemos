@@ -1,2 +1,2 @@
-include ':app', ':hyrvadapter'
+include ':app', ':hyrvadapter', ':axrvadapter'
 rootProject.name='YuyDemos'

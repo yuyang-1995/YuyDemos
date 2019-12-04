@@ -7,20 +7,10 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
-        android:text="ListView"
-        android:gravity="center"
-        android:textSize="25sp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/id_rv_activity_main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <ListView
-        android:id="@+id/id_lv_ma"
-        android:dividerHeight="15dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </ListView>
-
-
+        android:layout_height="match_parent"
+        />
 
 </LinearLayout>
