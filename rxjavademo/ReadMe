@@ -1,0 +1,22 @@
+//一：Rx操作符
+
+//1.1、创建操作符 文章地址：//https://www.jianshu.com/p/e19f8ed863b1
+//1、基本创建 : create 完整创建1个被观察者对象（Observable）
+//2、快速创建 ： just 快速创建1个被观察者对象（Observable） 发送事件的特点：直接发送 传入的事件
+//3、延迟创建 ： defer 时操作：在经过了x秒后，需要自动执行y操作  周期性操作：每隔x秒后，需要自动执行y操作
+
+
+//1.2、 功能性操作符 文章地址：https://www.jianshu.com/p/b0c3669affdb
+//作用： 辅助被观察者（Observable） 在发送事件时实现一些功能性需求； 如错误处理、线程调度等等， 常用的功能性操作符主要有：
+//1、 连接 被观察者 & 观察者 即 订阅 subscripe
+//2、 线程调用 subscribeOn、 observeOn
+//3、 延迟操作 delay
+//4、 在事件的生命周期中操作 do{ } 操作符
+//5、 错误处理( 即遇到错误时的机制) onErrorReturn、 onErroeResumeNext、 onExceptionResumeNext、 retry、
+       retryUtil、 retryWhen
+//6、 重复发送操作 repeat、 repeatwhen
+
+
+
+
+
