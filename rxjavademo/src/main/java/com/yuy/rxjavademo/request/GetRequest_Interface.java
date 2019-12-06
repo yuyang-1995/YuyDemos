@@ -3,7 +3,6 @@ package com.yuy.rxjavademo.request;
 import com.yuy.rxjavademo.bean.Translation;
 
 import io.reactivex.Observable;
-import retrofit2.Call;
 import retrofit2.http.GET;
 
 /**
@@ -15,6 +14,7 @@ import retrofit2.http.GET;
  */
 public interface GetRequest_Interface {
 
+    //和rxJava 配合
     @GET("ajax.php?a=fy&f=auto&t=auto&w=你好")
     Observable<Translation> getCall();
     // 注解里传入 网络请求 的部分URL地址
