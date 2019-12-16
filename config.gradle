@@ -1,0 +1,13 @@
+ext{
+    android = [
+            compileSdkVersion : 29,
+            buildToolsVersion : "29.0.2",
+            minSdkVersion : 19,
+            targetSdkVersion : 29
+    ]
+    version = [
+            retrofitSdkVersion : "2.6.2",
+            glideSdkVersion         : "4.9.0",
+            butterknifeSdkVersion   : "9.0.0",
+    ]
+}
