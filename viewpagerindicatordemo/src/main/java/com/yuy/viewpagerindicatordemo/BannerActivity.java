@@ -7,7 +7,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -109,7 +108,7 @@ public class BannerActivity extends AppCompatActivity {
     }
 
     //
-    class MyAdapter extends IndicatorViewPager.IndicatorViewPagerAdapter {
+   class MyAdapter extends IndicatorViewPager.IndicatorViewPagerAdapter {
         @Override
         public int getCount() {
             return images.length;

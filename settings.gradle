@@ -1,2 +1,2 @@
-include ':app', ':hyrvadapter', ':axrvadapter', ':rxjavademo', ':retrofitdemo', ':mvpdemo', ':mvvmdemo', ':viewpagerandfragmentdemo', ':viewpagerindicatordemo'
+include ':app', ':hyrvadapter', ':axrvadapter', ':rxjavademo', ':retrofitdemo', ':mvpdemo', ':mvvmdemo', ':viewpagerandfragmentdemo', ':viewpagerindicatordemo', ':yaoyiyaopage'
 rootProject.name='YuyDemos'
