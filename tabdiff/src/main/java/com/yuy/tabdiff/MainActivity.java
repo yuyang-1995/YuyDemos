@@ -3,6 +3,7 @@ package com.yuy.tabdiff;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
+import androidx.constraintlayout.widget.Guideline;
 
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -14,30 +15,25 @@ import android.widget.RelativeLayout;
 public class MainActivity extends AppCompatActivity {
 
     RelativeLayout relativeLayout;
-    ImageView imageView;
+    ImageView imageView, imageView1;
     Button btn;
     int screenWidth, screenHeight;
     private int pos;
-    private int[] tabpos = new int[]{0, 1, 2, 3};
+    View guideline;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         initView();
     }
 
     private void initView() {
-        DisplayMetrics displayMetrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-        screenHeight = displayMetrics.heightPixels; //屏幕高度
-        screenWidth = displayMetrics.widthPixels; //屏幕宽度
-        System.out.println(screenWidth + " 屏幕宽度 " + screenHeight);
+
         relativeLayout = findViewById(R.id.main_ll);
         imageView = findViewById(R.id.guide_find);
-
-
+        imageView1 = findViewById(R.id.guide_find1);
+        guideline = findViewById(R.id.line2);
         btn = findViewById(R.id.changetab);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,32 +53,26 @@ public class MainActivity extends AppCompatActivity {
     private void changeAdTab(int pos) {
         ConstraintLayout constraintLayout = findViewById(R.id.v_main);
         imageView.setImageResource(R.drawable.i2);
+        imageView1.setImageResource(R.drawable.icon);
         ConstraintSet set = new ConstraintSet();
         set.clone(constraintLayout);
         switch (pos) {
-            case 0:{
-
+            case 0:
                 set.setHorizontalBias(R.id.guide_find, 0f);
-
-            }
                 break;
             case 1:
-                imageView.setImageResource(R.drawable.icon);
-
-                set.setHorizontalBias(R.id.guide_find, 0.325f);
-
+                set.setHorizontalBias(R.id.line2, 0.375f);
                 break;
             case 2:
-                imageView.setImageResource(R.drawable.icon);
-                set.setHorizontalBias(R.id.guide_find, 0.675f);
+                set.setHorizontalBias(R.id.line2, 0.625f);
                 break;
-
-            case 3:    set.setHorizontalBias(R.id.guide_find, 1f);break;
+            case 3:
+                set.setHorizontalBias(R.id.guide_find, 1f);
+                break;
                 default:
                 break;
-
-
-        }                set.applyTo(constraintLayout);
+        }
+        set.applyTo(constraintLayout);
     }
 
 

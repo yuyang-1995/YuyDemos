@@ -3,9 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_ll"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
+    android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/v_main"
@@ -22,7 +20,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
 
         <View
             android:id="@+id/h_line"
@@ -41,13 +38,6 @@
             app:layout_constraintBottom_toBottomOf="parent">
 
         </com.shizhefei.view.indicator.FixedIndicatorView>
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.625" />
 
         <Button
             android:id="@+id/changetab"
@@ -70,6 +60,28 @@
             app:layout_constraintBottom_toTopOf="@+id/h_line"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent" />
+
+        <ImageView
+            android:background="@color/colorAccent"
+            android:id="@+id/guide_find1"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toTopOf="@+id/h_line"
+            app:layout_constraintLeft_toLeftOf="@id/line2"
+            app:layout_constraintRight_toRightOf="@id/line2" />
+
+        <View
+            android:id="@+id/line2"
+            android:layout_width="1dp"
+            app:layout_constraintBottom_toTopOf="@+id/h_line"
+            android:layout_height="1dp"
+            android:orientation="vertical"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            />
 
         <ImageView
             android:id="@+id/v1"
@@ -100,8 +112,6 @@
             app:layout_constraintHorizontal_bias="0.75"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent" />
-
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
