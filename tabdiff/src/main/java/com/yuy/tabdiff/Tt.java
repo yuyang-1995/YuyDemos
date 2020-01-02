@@ -9,5 +9,5 @@ public class Tt {
 
     private int i;
     private float f;
-
+    private boolean fb;
 }

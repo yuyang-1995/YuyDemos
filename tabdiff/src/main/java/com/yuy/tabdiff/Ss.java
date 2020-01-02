@@ -7,4 +7,6 @@ package com.yuy.tabdiff;
  */
 public class Ss {
     int i;
+    float f;
+
 }
