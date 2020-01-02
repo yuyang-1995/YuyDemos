@@ -6,4 +6,6 @@ package com.yuy.tabdiff;
  * Create by yuy on  2020/1/2.
  */
 public class Tt {
+
+    private int i;
 }
