@@ -8,4 +8,5 @@ package com.yuy.tabdiff;
 public class Tt {
 
     private int i;
+    private float f;
 }
