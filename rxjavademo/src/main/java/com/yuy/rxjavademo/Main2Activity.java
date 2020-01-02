@@ -48,6 +48,7 @@ public class Main2Activity extends AppCompatActivity {
         Observable<CharSequence> ageObservable = RxTextView.textChanges(age).skip(1);
         Observable<CharSequence> jobObservable = RxTextView.textChanges(job).skip(1);
 
+
         /*
          * 步骤3：通过combineLatest（）合并事件 & 联合判断
          **/

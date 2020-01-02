@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Main2Activity">
+
+    <RelativeLayout
+        android:id="@+id/id_ad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/skip_wrapper"
+        android:layout_width="48dp"
+        android:layout_height="24dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="7dp"
+        android:layout_marginRight="10dp"
+        android:textColor="#899C53">
+
+        <TextView
+            android:id="@+id/skip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="跳过"
+            android:textColor="#0A0A0A"
+            android:textSize="11sp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/info_root_vip"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginRight="12dp"
+        android:layout_toLeftOf="@id/skip_wrapper"
+        android:background="#CC3131"
+        android:gravity="center_vertical"
+        android:paddingLeft="7dp"
+        android:paddingRight="7dp"
+       >
+
+        <TextView
+            android:id="@+id/info_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="3dp"
+            android:textColor="#899C53"
+            android:textSize="13sp" />
+
+        <View
+            android:id="@+id/info_divider"
+            android:layout_width="0.5dp"
+            android:layout_height="15dp"
+            android:layout_marginTop="1dp"
+            android:textColor="#899C53" />
+
+        <TextView
+            android:id="@+id/info_block_ad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/info_divider"
+            android:text="金币免广告"
+            android:textColor="#F2F3EE"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/id_btn"
+        android:text="切换"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

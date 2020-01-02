@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initView() {
-
         relativeLayout = findViewById(R.id.main_ll);
         imageView = findViewById(R.id.guide_find);
         imageView1 = findViewById(R.id.guide_find1);

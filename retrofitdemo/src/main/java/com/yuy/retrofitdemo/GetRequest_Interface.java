@@ -26,7 +26,7 @@ public interface GetRequest_Interface {
     //}
 
 
-    //1、 注解里传入 网络请求 的部分URL地址； getCall()是接受网络请求数据的方法
+    //1、 注解里传入网络请求的部分URL地址； getCall()是接受网络请求数据的方法
 
     //2、注解类型：
     //网络请求方式： @GET @POST @PUT @DELETE @PATH @HEAD @OPTIONS @HTTP

@@ -63,10 +63,14 @@ public class MoreTabActivity extends AppCompatActivity {
         scrollIndicatorView.setOnTransitionListener(new OnTransitionTextListener().setColor(Color.RED, unSelectTextColor));
 
         viewPager.setOffscreenPageLimit(2);
+
         indicatorViewPager = new IndicatorViewPager(scrollIndicatorView, viewPager);
         inflate = LayoutInflater.from(getApplicationContext());
 
+
         indicatorViewPager.setAdapter(new MyAdapter(getSupportFragmentManager()));
+
+        scrollIndicatorView.setCurrentItem(2);
 
         //默认true, 自动布局
         splitAutotoggleButton.setChecked(scrollIndicatorView.isSplitAuto());
