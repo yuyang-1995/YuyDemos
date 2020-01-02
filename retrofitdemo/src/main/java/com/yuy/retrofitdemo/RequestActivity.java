@@ -66,8 +66,8 @@ public class RequestActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create()) //设置使用Gson解析(记得加入依赖)
                 .build();
 
-        // 步骤5:创建 网络请求接口 的实例
-        final PostRequest_Interface request = retrofit.create(PostRequest_Interface.class);
+        // 步骤5:创建 网络请求接口 的实例  通过Retrifit 创建 网络请求接口
+         PostRequest_Interface request = retrofit.create(PostRequest_Interface.class);
 
         //对 发送请求 进行封装(设置需要翻译的内容)
         Call<Translation1> call = request.getCall("Yellow","Panda","I love you");
@@ -123,6 +123,7 @@ public class RequestActivity extends AppCompatActivity {
             public void onFailure(Call<Translation> call, Throwable throwable) {
                 System.out.println("连接失败");
             }
+
         });
     }
 }

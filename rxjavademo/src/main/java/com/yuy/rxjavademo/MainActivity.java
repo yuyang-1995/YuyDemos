@@ -572,6 +572,7 @@ public class MainActivity extends AppCompatActivity {
                         Log.d(TAG,"最终获取的数据来源 =  "+ s);
                     }
                 });
+
   }
 
 
@@ -618,8 +619,6 @@ public class MainActivity extends AppCompatActivity {
             public void onSubscribe(Disposable d) {
                 Log.d(TAG, "开始采用subscribe连接");
                 Log.d(TAG, " 观察者 Observer的工作线程是: " + Thread.currentThread().getName());
-                // 打印验证
-
             }
             @Override
             public void onNext(Integer value) {
@@ -686,7 +685,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     /**************************************************
-     * 变换操作符演示
+     * 变换操作符演示  map   flatMap  concatMap
      * 作用 ：对事件序列中的事件 / 整个事件序列 进行加工处理（即变换），使得其转变成不同的事件 / 整个事件序列
      * 应用场景 ： 变换操作符的主要开发需求场景 = 嵌套回调（Callback hell）
      *
@@ -809,8 +808,6 @@ public class MainActivity extends AppCompatActivity {
                         Log.d(TAG, "对Complete事件作出响应");
                     }
                 });
-
-
 
     }
 
