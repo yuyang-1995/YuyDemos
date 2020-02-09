@@ -14,13 +14,28 @@
     <TextView
         android:id="@+id/tv"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
         android:layout_width="120dp"
+        android:layout_marginLeft="100dp"
         android:layout_height="45dp"
-        android:text="开始"
+        android:text="点击看电视"
         android:textColor="#fff"
         android:background="#77789009"
         android:gravity="center"
         />
+
+    <TextView
+        android:id="@+id/audio"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/tv"
+        android:layout_marginLeft="20dp"
+        android:layout_width="120dp"
+        android:layout_height="45dp"
+        android:text="点击听电视"
+        android:textColor="#fff"
+        android:background="#77789009"
+        android:gravity="center"
+        />
+
+
 
 </RelativeLayout>

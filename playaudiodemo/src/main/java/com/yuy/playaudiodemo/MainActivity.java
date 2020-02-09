@@ -2,7 +2,7 @@ package com.yuy.playaudiodemo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.media.AudioManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.SurfaceHolder;
@@ -12,13 +12,12 @@ import android.widget.TextView;
 
 import java.io.IOException;
 
-import tv.danmaku.ijk.media.player.IjkMediaPlayer;
 
 public class MainActivity extends AppCompatActivity {
-    MyIjkMediaPlayer mPlayer;
+    static MyIjkMediaPlayer mPlayer;
 
     SurfaceView mSurfaceView;
-    TextView mView;
+    TextView mView, mAudio;
 
     boolean hasStarted = false;
 
@@ -46,6 +45,9 @@ public class MainActivity extends AppCompatActivity {
 
         }
     };
+    private boolean isAudio;
+    private boolean AudioModel;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,28 +55,44 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mPlayer = new MyIjkMediaPlayer(this);
-
         mSurfaceView = findViewById(R.id.m_sview);
         mSurfaceView.getHolder().addCallback(surfaceCallback);
         mPlayer.init(mSurfaceView);
-//        mPlayer.setPath("rtmp://220.248.34.75:1935/live/camera_2");
         mPlayer.setPath("rtmp://58.200.131.2:1935/livetv/hunantv");
-
         mView = findViewById(R.id.tv);
         mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.v("MyIjkMediaPlayer", "onClick: hasStarted-"+hasStarted);
                 if (!hasStarted) {
-                    mPlayer.start();
-                    hasStarted = true;
-                    mView.setText("暂停");
-                } else {
-                    mPlayer.pause();
-                    mView.setText("开始");
-                    hasStarted = false;
+                            mPlayer.start();
+                            hasStarted = true;
+                            mView.setText("暂停(看电视中..)");
+                        } else {
+                            mPlayer.pause();
+                            mView.setText("点击看电视");
+                            hasStarted = false;
+                        }
                 }
+        });
 
+        mAudio = findViewById(R.id.audio);
+        mAudio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!isAudio) {
+                    isAudio = true;
+                    mView.setText("点击看电视");
+                    mAudio.setText("暂停(听电视中..)");
+                    mPlayer.pause();
+                    Intent intent = new Intent(MainActivity.this, AudioService.class);
+                    startService(intent);
+                }else {
+                    isAudio = false;
+                    mPlayer.pause();
+                    mAudio.setText("点击听电视");
+                    Intent intent = new Intent(MainActivity.this, AudioService.class);
+                    stopService(intent);
+                }
             }
         });
     }
@@ -85,9 +103,27 @@ public class MainActivity extends AppCompatActivity {
         super.onPause();
     }
 
+    private boolean isFirst = true;
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (!isAudio) {
+            mPlayer.start();
+            if (!isFirst) {
+                mView.setText("暂停(看电视中..)");
+            }
+        }else {
+            mView.setText("点击看电视");
+        }
+        isFirst = false;
+    }
+
     @Override
     protected void onStop() {
         super.onStop();
+        if (!isAudio){
+            mPlayer.pause();
+        }
     }
 
     @Override

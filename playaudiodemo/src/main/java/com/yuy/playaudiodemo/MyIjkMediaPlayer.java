@@ -2,6 +2,8 @@ package com.yuy.playaudiodemo;
 
 import android.content.Context;
 import android.net.Uri;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.SurfaceView;
 
@@ -16,7 +18,7 @@ import tv.danmaku.ijk.media.player.IjkMediaPlayer;
  * Other:
  * Create by yuy on  2020/1/17.
  */
-public class MyIjkMediaPlayer {
+public class MyIjkMediaPlayer  {
 
     private final static String TAG = "MyIjkMediaPlayer";
 
@@ -83,6 +85,13 @@ public class MyIjkMediaPlayer {
         mContext = context;
     }
 
+    protected MyIjkMediaPlayer(Parcel in) {
+        mPath = in.readString();
+        mEnableMediaCodec = in.readByte() != 0;
+    }
+
+
+
     public void init(SurfaceView surfaceView) {
         Log.v(TAG, "init");
         IjkMediaPlayer.loadLibrariesOnce(null);
@@ -90,6 +99,11 @@ public class MyIjkMediaPlayer {
         mSurfaceView = surfaceView;
     }
 
+    public void init() {
+        Log.v(TAG, "init");
+        IjkMediaPlayer.loadLibrariesOnce(null);
+        IjkMediaPlayer.native_profileBegin("libijkplayer.so");
+    }
 
     //创建一个新的player
     private IMediaPlayer createPlayer() {
@@ -153,22 +167,27 @@ public class MyIjkMediaPlayer {
 
     //开始加载视频
     public void load() throws IOException {
+        Log.d("Status:","load");
         if(mMediaPlayer != null){
             mMediaPlayer.stop();
             mMediaPlayer.release();
         }
         mMediaPlayer = createPlayer();
         setListener();
-        mMediaPlayer.setDisplay(mSurfaceView.getHolder());
-        mMediaPlayer.setDataSource(mContext, Uri.parse(mPath),mHeader);
+        if (mSurfaceView != null && mSurfaceView.getHolder() != null) {
+            mMediaPlayer.setDisplay(mSurfaceView.getHolder());
+        }
 
+        mMediaPlayer.setDataSource(mContext, Uri.parse(mPath),mHeader);
         mMediaPlayer.prepareAsync();
     }
 
     public void start() {
+        Log.d("Status:","start");
+        Log.d("mMediaPlayer", (mMediaPlayer == null) + "");
+
         if (mMediaPlayer != null) {
             mMediaPlayer.start();
-//            mAudioFocusHelper.requestFocus();
         }
     }
 
@@ -178,7 +197,6 @@ public class MyIjkMediaPlayer {
             mMediaPlayer.reset();
             mMediaPlayer.release();
             mMediaPlayer = null;
-//            mAudioFocusHelper.abandonFocus();
         }
         IjkMediaPlayer.native_profileEnd();
     }
@@ -186,14 +204,12 @@ public class MyIjkMediaPlayer {
     public void pause() {
         if (mMediaPlayer != null) {
             mMediaPlayer.pause();
-//            mAudioFocusHelper.abandonFocus();
         }
     }
 
     public void stop() {
         if (mMediaPlayer != null) {
             mMediaPlayer.stop();
-//            mAudioFocusHelper.abandonFocus();
         }
     }
 
@@ -201,7 +217,6 @@ public class MyIjkMediaPlayer {
     public void reset() {
         if (mMediaPlayer != null) {
             mMediaPlayer.reset();
-//            mAudioFocusHelper.abandonFocus();
         }
     }
 
@@ -236,6 +251,8 @@ public class MyIjkMediaPlayer {
         }
         return false;
     }
+
+
 
     public abstract class VideoPlayerListener implements IMediaPlayer.OnBufferingUpdateListener,
             IMediaPlayer.OnCompletionListener, IMediaPlayer.OnPreparedListener, IMediaPlayer.OnInfoListener,
